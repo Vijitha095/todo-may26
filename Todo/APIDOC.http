@@ -1,0 +1,77 @@
+# api call for user register
+###
+POST http://127.0.0.1:8000/user
+Content-Type: application/json
+
+{
+    "username":"manu@123",
+    "email":"manu@gmail.com",
+    "password":"manu@123"
+}
+
+
+# api call for token generation
+###
+POST http://127.0.0.1:8000/login
+Content-Type: application/json
+
+{
+    "username":"manu@123",
+    "password":"manu@123"
+}
+
+###
+@token=16b27d2649b83bf934fdc379103cd9aaa6cdf53a
+
+# api call for todo create
+###
+POST http://127.0.0.1:8000/todo
+Content-Type: application/json
+Authorization: Token {{token}}
+
+{
+    "title":"Project2",
+    "content":"Django based mini project",
+    "due_date":"2026-08-27"
+}
+
+# api call for todos list
+###
+GET http://127.0.0.1:8000/todo
+Authorization: Token {{token}}
+
+
+# api call for todo retrieve
+###
+GET http://127.0.0.1:8000/todo/detail/3
+Authorization: Basic manu@123:manu@123
+
+# api call for todo update
+###
+PUT http://127.0.0.1:8000/todo/detail/5
+Content-Type: application/json
+Authorization: Basic manu@123:manu@123
+
+ {
+    "id": 5,
+    "title": "Project2",
+    "content": "Django based mini project",
+    "added_date": "2026-08-18",
+    "due_date": "2026-08-27",
+    "status": "completed",
+    "owner": 2
+  }
+
+
+# api call for todo delete
+###
+DELETE http://127.0.0.1:8000/todo/detail/3
+Authorization: Basic manu@123:manu@123
+
+
+# api call for todos count
+###
+GET http://127.0.0.1:8000/count
+Authorization: Basic manu@123:manu@123
+
+
